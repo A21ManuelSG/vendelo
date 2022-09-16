@@ -1,6 +1,13 @@
 <h2>Anhadir producto</h2>
 
 <%= form_with model: @product do |form| %>
+
+    <% @product.errors.full_messages.each do |error| %>
+        <div>
+            <%= error %>
+        </div>
+    <% end %>
+
     <div>
         <%= form.label :title %>
         <%= form.text_field :title %>
@@ -15,6 +22,6 @@
         <%= form.label :price %>
         <%= form.number_field :price %>
     </div>
-    
+
     <%= form.submit %>
 <% end %>
