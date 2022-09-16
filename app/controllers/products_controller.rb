@@ -7,4 +7,7 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id]) # Con params[:id] obtenemos el parametro que enviemos en la url
     end
 
+    def new
+        @product = Product.new
+    end
 end
