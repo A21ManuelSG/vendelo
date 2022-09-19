@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
         if @product.save
 
-            redirect_to products_path
+            redirect_to products_path, notice: 'Tu producto se ha creado correctamente'
 
         else
         
