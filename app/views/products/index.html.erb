@@ -1,13 +1,3 @@
 <h1>Productos:</h1>
 
-<%= Date.today %>
-<br>
-<%= @products.count %>
-<br>
-<% @products.each do |product| %>
- <%= link_to product_path(product.id), class: 'product' do %>
-   <%= image_tag product.photo, width: 100 if product.photo.attached?%><br> 
-    <h2><%= product.title %></h2>
-    <span><%= product.price %>$</span><br>
- <% end %>      
-<% end %>  
+<%= render partial: 'shared/product', collection: @products %>

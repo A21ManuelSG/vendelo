@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
     def index
-        @products = Product.all() # Nos devuelve todos los productos, y lo almacenamos en una variable global o de instancia
+        @products = Product.all.with_attached_photo # Nos devuelve todos los productos, y lo almacenamos en una variable global o de instancia
     end
 
     def show
-        @product = Product.find(params[:id]) # Con params[:id] obtenemos el parametro que enviemos en la url
+        product # Con params[:id] obtenemos el parametro que enviemos en la url
     end
 
     def new
@@ -27,13 +27,12 @@ class ProductsController < ApplicationController
     end
 
     def edit
-        @product = Product.find(params[:id])
+        product
     end
 
     def update
-        @product = Product.find(params[:id])
 
-        if @product.update(product_params)
+        if product.update(product_params)
 
             redirect_to products_path, notice: 'Tu producto se ha actualizado correctamente'
 
@@ -46,8 +45,7 @@ class ProductsController < ApplicationController
     end
 
     def destroy
-        @product = Product.find(params[:id])
-        @product.destroy
+        product.destroy
         redirect_to products_path, notice: 'Tu producto se ha eliminado correctamente', status: :see_other
     end
 
@@ -55,6 +53,10 @@ class ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:title, :description, :price, :photo)
+    end
+
+    def product
+        @product = Product.find(params[:id])
     end
 
 end
