@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
         if @product.save
 
-            redirect_to products_path, notice: 'Tu producto se ha creado correctamente'
+            redirect_to products_path, notice: t('.created')
 
         else
         
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
         if product.update(product_params)
 
-            redirect_to products_path, notice: 'Tu producto se ha actualizado correctamente'
+            redirect_to products_path, notice: t('.updated')
 
         else
 
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
 
     def destroy
         product.destroy
-        redirect_to products_path, notice: 'Tu producto se ha eliminado correctamente', status: :see_other
+        redirect_to products_path, notice: t('.destroyed'), status: :see_other
     end
 
     private 
