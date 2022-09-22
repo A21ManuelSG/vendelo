@@ -5,7 +5,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         get products_path  # products_path = '/products'
 
         assert_response :success # Estamos esperando que la respuesta sea satisfactoria, que no haya ningun error en nuestro codigo
-        assert_select '.product', 2 # Esperamos que haya 2 productos en la base de datos (Creamos la base de datos de ejemplo en products.yml)
+        assert_select '.product', 3 # Esperamos que haya 2 productos en la base de datos (Creamos la base de datos de ejemplo en products.yml)
     end
 
     test 'render a detailed product page' do
@@ -30,7 +30,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
             product: {
                 title:'Nintendo 64',
                 description:'Le falta los cables',
-                price: 45
+                price: 45,
+                category_id: categories(:videogames).id
             }
         }
 

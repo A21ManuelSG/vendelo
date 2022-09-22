@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     def index
-        @products = Product.all.with_attached_photo # Nos devuelve todos los productos, y lo almacenamos en una variable global o de instancia
+        @products = Product.all.with_attached_photo.order(created_at: :desc) # Nos devuelve todos los productos, y lo almacenamos en una variable global o de instancia
     end
 
     def show
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
     private 
 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :photo)
+        params.require(:product).permit(:title, :description, :price, :photo, :category_id)
     end
 
     def product
