@@ -65,6 +65,7 @@ en:
 
     index:
       title: 'Products:'
+      all: 'All'
 
     create:
       created: 'Your product has been created succesfully'
